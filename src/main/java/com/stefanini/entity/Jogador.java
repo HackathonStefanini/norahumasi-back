@@ -1,5 +1,7 @@
 package com.stefanini.entity;
 
+import com.stefanini.converter.ConversorCriptoString;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -20,6 +22,7 @@ public class Jogador {
     @Column(unique = true)
     private String nickname;
 
+    @Convert(converter = ConversorCriptoString.class)
     @NotBlank(message = "Campo senha não pode estar vazio")
     @Size(min = 4,max = 10, message = "A senha deve conter entre 4 e 10 caracteres")
     @Column
