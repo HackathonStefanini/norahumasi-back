@@ -13,7 +13,7 @@ import java.util.Objects;
 @ApplicationScoped
 public class StefamonService {
 
-    private @Inject StefamonRepository repository;
+    @Inject StefamonRepository repository;
 
     public List<Stefamon> listarTodos(){
         return repository.listAll();

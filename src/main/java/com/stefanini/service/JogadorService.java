@@ -13,7 +13,7 @@ import java.util.Objects;
 @ApplicationScoped
 public class JogadorService {
 
-    private @Inject JogadorRepository jogadorRepository;
+    @Inject JogadorRepository jogadorRepository;
 
     public void salvar(Jogador jogador) {
         jogadorRepository.save(jogador);
