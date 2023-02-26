@@ -26,4 +26,11 @@ public class StefamonResource {
         return Response.status(Response.Status.OK).entity(service.pegarPorId(id)).build();
     }
 
+    @GET
+    @Path("/{id}/preco")
+    public Response calcularPreco(@PathParam("id") Long id) {
+        return Response.status(Response.Status.OK).entity(service.precoPorId(id)).build();
+    }
+
 }
+

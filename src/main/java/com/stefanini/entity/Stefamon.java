@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_stefamon")
@@ -107,5 +110,18 @@ public class Stefamon {
 
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
+    }
+
+    public BigDecimal calcularPreco(){
+        List<Integer> listaValorAtributos = getListaValorAtributos();
+        System.out.println(BigDecimal.valueOf(listaValorAtributos.stream().count()));
+        return BigDecimal.valueOf(listaValorAtributos.stream()
+                        .reduce(0, (identidade, acumulador) -> identidade + acumulador))
+                .divide(BigDecimal.valueOf(listaValorAtributos.stream().count()), 2, RoundingMode.HALF_UP);
+    }
+
+    private List<Integer> getListaValorAtributos(){
+        List<Integer> listaValorAtributos = List.of(getAtaque(), getVelocidade(), getDefesa(), getVida(), getPoder(), getInteligencia());
+        return listaValorAtributos;
     }
 }
