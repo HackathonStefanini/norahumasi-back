@@ -114,7 +114,6 @@ public class Stefamon {
 
     public BigDecimal calcularPreco(){
         List<Integer> listaValorAtributos = getListaValorAtributos();
-        System.out.println(BigDecimal.valueOf(listaValorAtributos.stream().count()));
         return BigDecimal.valueOf(listaValorAtributos.stream()
                         .reduce(0, (identidade, acumulador) -> identidade + acumulador))
                 .divide(BigDecimal.valueOf(listaValorAtributos.stream().count()), 2, RoundingMode.HALF_UP);
