@@ -33,6 +33,7 @@ public class JogadorResource {
     }
 
     @PUT
+    @Path("/{id}")
     public Response alterar(@Valid Jogador jogador) {
         jogadorService.alterar(jogador);
         return Response.status(Response.Status.OK).build();
