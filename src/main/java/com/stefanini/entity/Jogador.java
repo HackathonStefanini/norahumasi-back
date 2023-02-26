@@ -25,10 +25,8 @@ public class Jogador {
     @Column
     private String password;
 
-    @NotBlank(message = "Campo saldo não pode estar vazio")
     @Column
-    private BigDecimal saldo;
-
+    private BigDecimal saldo = BigDecimal.valueOf(150);
 
     @ManyToMany
     @JoinTable(name = "Jogador_Stefamon",
