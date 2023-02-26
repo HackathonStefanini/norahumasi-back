@@ -4,13 +4,16 @@ import com.stefanini.entity.Stefamon;
 import com.stefanini.exceptions.RegraDeNegocioException;
 import com.stefanini.repository.StefamonRepository;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Objects;
 
+@ApplicationScoped
 public class StefamonService {
 
-    StefamonRepository repository;
+    private @Inject StefamonRepository repository;
 
     public List<Stefamon> listarTodos(){
         return repository.listAll();
