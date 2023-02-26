@@ -1,6 +1,8 @@
 package com.stefanini.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +15,16 @@ public class Jogador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Campo nickname não pode estar vazio")
     @Column(unique = true)
     private String nickname;
 
+    @NotBlank(message = "Campo senha não pode estar vazio")
+    @Size(min = 4,max = 10, message = "A senha deve conter entre 4 e 10 caracteres")
     @Column
     private String password;
 
+    @NotBlank(message = "Campo saldo não pode estar vazio")
     @Column
     private BigDecimal saldo;
 
